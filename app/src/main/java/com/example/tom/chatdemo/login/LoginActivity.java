@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tom.chatdemo.R;
+import com.example.tom.chatdemo.login.RegisterAndRetieve.Register;
 
 import Model.UserModel;
 
@@ -84,6 +85,13 @@ public class LoginActivity extends Activity {
 //        }.start();
 
 
+    }
+
+    public void  registerClick (View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, Register.class);
+        LoginActivity.this.startActivity(intent);
     }
     private Handler handler = new Handler()
     {
