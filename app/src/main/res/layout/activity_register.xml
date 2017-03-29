@@ -3,33 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorAccent"
-        android:id="@+id/fragment_title2"
-        >
-        <Button
-            android:paddingTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:text="返回"
-            android:background="#00000000"
-            android:textColor="#F8F8FF"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="注册"
-            android:background="#00000000"
-            android:textColor="#F8F8FF"
-            />
+    <!-- Title -->
 
-
-    </FrameLayout>
+    <include layout="@layout/layout_titlebar" android:id="@+id/fragment_title2"/>
 
 
     <RelativeLayout
@@ -48,9 +24,10 @@
             android:ems="10"
             android:layout_marginTop="21dp"
             android:id="@+id/editText4"
-            android:hint="密码"
+            android:hint="密码:"
             android:layout_below="@+id/editText3"
-            android:background="@drawable/shape_textview"
+            android:background="@drawable/shape_regeitetext"
+            android:textSize="15dp"
            />
 
         <LinearLayout
@@ -60,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/editText5"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/linearLayout_register"
             >
 
@@ -69,18 +46,22 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:hint="验证码"
+                android:hint="验证码:"
                 android:layout_below="@+id/editText3"
-                android:background="@drawable/shape_textview"
+                android:background="@drawable/shape_regeitetext"
+                android:textSize="15dp"
                 />
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="获取验证码"
-                android:background="@color/colorAccent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_regei_button"
                 android:textColor="@color/ColorWhiteColor"
-
+                android:ems="10"
+                android:textSize="15dp"
+                android:onClick="getVerCodeClick"
 
                 />
 
@@ -89,13 +70,14 @@
         <Button
             android:text="注册"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/linearLayout_register"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
-            android:id="@+id/button9"
-            android:background="@color/colorAccent"
+            android:layout_marginTop="40dp"
+            android:id="@+id/button_register"
+            android:background="@drawable/shape_regei_button"
             android:textColor="@color/ColorWhiteColor"
+            android:onClick="register"
 
 
             />
@@ -107,11 +89,13 @@
             android:ems="10"
             android:layout_marginTop="12dp"
             android:id="@+id/editText5"
-            android:hint="确认密码"
-            android:background="@drawable/shape_textview"
+            android:hint="确认密码:"
+            android:background="@drawable/shape_regeitetext"
             android:layout_below="@+id/editText4"
             android:layout_alignLeft="@+id/editText4"
-            android:layout_alignStart="@+id/editText4" />
+            android:layout_alignStart="@+id/editText4"
+            android:textSize="15dp"
+            />
 
         <EditText
             android:layout_width="250dp"
@@ -124,7 +108,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/editText4"
             android:layout_alignStart="@+id/editText4"
-            android:background="@drawable/shape_textview"
+            android:background="@drawable/shape_regeitetext"
+            android:textSize="15dp"
             />
 
 

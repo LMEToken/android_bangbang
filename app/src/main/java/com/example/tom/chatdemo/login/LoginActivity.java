@@ -12,16 +12,20 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tom.chatdemo.R;
-import com.example.tom.chatdemo.login.RegisterAndRetieve.Register;
+import com.example.tom.chatdemo.login.RegisterAndRetieve.FrogetPassWordActivity;
+import com.example.tom.chatdemo.login.RegisterAndRetieve.RegisterActivity;
 
 import Model.UserModel;
 
 public class LoginActivity extends Activity {
 
     private View view;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +52,13 @@ public class LoginActivity extends Activity {
         EditText editText1 = (EditText) findViewById(R.id.userName);
         Drawable drawable1 = getResources().getDrawable(R.drawable.acconet);
         drawable1.setBounds(0, 0, 40, 40);//第一0是距左边距离，第二0是距上边距离，40分别是长宽
+        drawable1.setAlpha(200);
         editText1.setCompoundDrawables(drawable1, null, null, null);//只放左
 
 
         EditText editText2 = (EditText) findViewById(R.id.passWorld);
         Drawable drawable2 = getResources().getDrawable(R.drawable.password);
+        drawable2.setAlpha(200);
         drawable2.setBounds(0, 0, 40, 40);//第一0是距左边距离，第二0是距上边距离，40分别是长宽
         editText2.setCompoundDrawables(drawable2, null, null, null);//只放左
 
@@ -60,6 +66,13 @@ public class LoginActivity extends Activity {
         // this.requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
 
+    public void  forgetPassWord(View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, FrogetPassWordActivity.class);
+        LoginActivity.this.startActivity(intent);
+
+    }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void  loginClick(View view) {
 
@@ -90,7 +103,7 @@ public class LoginActivity extends Activity {
     public void  registerClick (View view)
     {
         Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, Register.class);
+        intent.setClass(LoginActivity.this, RegisterActivity.class);
         LoginActivity.this.startActivity(intent);
     }
     private Handler handler = new Handler()

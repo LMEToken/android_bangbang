@@ -17,28 +17,41 @@
 
     </FrameLayout>
 
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@drawable/loginbackground_top"-->
-        <!--&gt;-->
-    <!--</FrameLayout>-->
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/loginbackground_top"
+        >
+    </FrameLayout>
 
     <EditText
-
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+
         android:ems="10"
         android:id="@+id/userName"
+        android:hint="手机号"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/shape_textview"
+        android:textSize="15dp"
+        android:layout_above="@+id/passWorld"
+        android:layout_alignLeft="@+id/passWorld"
+        android:layout_alignStart="@+id/passWorld"
+        />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passWorld"
         android:hint="密码"
         style="@style/Widget.AppCompat.EditText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/shape_textview"
         android:textSize="15dp"
-
         />
 
     <Button
@@ -64,6 +77,7 @@
         android:id="@+id/button5"
         android:textColor="@color/ColorWhiteColor"
         android:background="@color/ColorClearColor"
+        android:onClick="forgetPassWord"
         />
 
     <Button
@@ -79,18 +93,6 @@
         android:onClick="registerClick"
         />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passWorld"
-        android:hint="账号"
-        android:layout_marginBottom="23dp"
-        android:background="@drawable/shape_textview"
-        android:textSize="15dp"
-        android:layout_above="@+id/userName"
-        android:layout_alignLeft="@+id/userName"
-        android:layout_alignStart="@+id/userName" />
+
 
 </RelativeLayout>
