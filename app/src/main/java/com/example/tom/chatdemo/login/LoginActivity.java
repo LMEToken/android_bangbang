@@ -12,16 +12,21 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tom.chatdemo.R;
 import com.example.tom.chatdemo.login.RegisterAndRetieve.FrogetPassWordActivity;
 import com.example.tom.chatdemo.login.RegisterAndRetieve.RegisterActivity;
 
+import java.util.HashMap;
+
 import Model.UserModel;
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
+import cn.smssdk.gui.RegisterPage;
 
 public class LoginActivity extends Activity {
+
 
     private View view;
 
@@ -34,7 +39,9 @@ public class LoginActivity extends Activity {
 
 
 
+
         Window window = this.getWindow();
+
 
         //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -68,9 +75,10 @@ public class LoginActivity extends Activity {
 
     public void  forgetPassWord(View view)
     {
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, FrogetPassWordActivity.class);
-        LoginActivity.this.startActivity(intent);
+//        Intent intent = new Intent();
+//        intent.setClass(LoginActivity.this, FrogetPassWordActivity.class);
+//        LoginActivity.this.startActivity(intent);
+        registerClick(view);
 
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -102,9 +110,33 @@ public class LoginActivity extends Activity {
 
     public void  registerClick (View view)
     {
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, RegisterActivity.class);
-        LoginActivity.this.startActivity(intent);
+
+        SMSSDK.initSDK(this, "1c89c29c7e4f6", "ea85a197191dd3cd6af8176942f5d078");
+
+        RegisterPage registerPage = new RegisterPage();
+        registerPage.setRegisterCallback(new EventHandler() {
+
+            public void afterEvent(int event, int result, Object data) {
+                // 解析注册结果
+                if (result == SMSSDK.RESULT_COMPLETE) {
+                    @SuppressWarnings("unchecked")
+                    HashMap<String,Object> phoneMap = (HashMap<String, Object>) data;
+                    String country = (String) phoneMap.get("country");
+                    String phone = (String) phoneMap.get("phone");
+
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("phoneNum", phone);
+                    intent.putExtras(bundle);
+                    intent.setClass(LoginActivity.this, RegisterActivity.class);
+                    LoginActivity.this.startActivity(intent);
+
+                }
+            }
+        });
+
+        registerPage.show(this);
+
     }
     private Handler handler = new Handler()
     {

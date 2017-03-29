@@ -31,6 +31,8 @@ public class CenterFragMent extends Fragment {
 
         listView = (ListView)view.findViewById(R.id.listview2);
 
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
